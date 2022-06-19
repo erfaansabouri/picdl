@@ -1,0 +1,107 @@
+@font-face {
+    font-family: "yekanBakh-Hairline";
+    src: url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 01\ Hairline.eot")
+        format("embedded-opentype"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 01\ Hairline.woff") format("woff"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 01\ Hairline.ttf")
+        format("truetype");
+    font-style: normal;
+}
+@font-face {
+    font-family: "yekanBakh-Thin";
+    src: url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 02\ Thin.eot")
+        format("embedded-opentype"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 02\ Thin.woff") format("woff"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 02\ Thin.ttf")
+        format("truetype");
+    font-style: normal;
+}
+@font-face {
+    font-family: "yekanBakh-Light";
+    src: url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 03\ Light.eot")
+        format("embedded-opentype"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 03\ Light.woff") format("woff"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 03\ Light.ttf")
+        format("truetype");
+    font-style: normal;
+}
+@font-face {
+    font-family: "yekanBakh-Regular";
+    src: url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 04\ Regular.eot")
+        format("embedded-opentype"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 04\ Regular.woff") format("woff"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 04\ Regular.ttf")
+        format("truetype");
+    font-style: normal;
+}
+@font-face {
+    font-family: "yekanBakh-Medium";
+    src: url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 05\ Medium.eot")
+        format("embedded-opentype"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 05\ Medium.woff") format("woff"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 05\ Medium.ttf")
+        format("truetype");
+    font-style: normal;
+}
+@font-face {
+    font-family: "yekanBakh-Bold";
+    src: url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 06\ Bold.eot")
+        format("embedded-opentype"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 06\ Bold.woff") format("woff"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 06\ Bold.ttf")
+        format("truetype");
+    font-style: normal;
+}
+@font-face {
+    font-family: "yekanBakh-Heavy";
+    src: url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 07\ Heavy.eot")
+        format("embedded-opentype"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 07\ Heavy.woff") format("woff"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 07\ Heavy.ttf")
+        format("truetype");
+    font-style: normal;
+}
+@font-face {
+    font-family: "yekanBakh-Fat";
+    src: url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 08\ Fat.eot")
+        format("embedded-opentype"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 08\ Fat.woff") format("woff"),
+      url("../fonts/yekanbakh/Yekan\ Bakh\ Fa-En\ 08\ Fat.ttf")
+        format("truetype");
+    font-style: normal;
+}
+
+
+@mixin flex($align:center,$justify:center) {
+      display: flex;
+      align-items: $align;
+      justify-content: $justify;
+}
+
+$transition:all .2s linear;
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+body{
+    direction: rtl; 
+    background:  #f7f8f9;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    padding: 0;
+    margin: 0;
+}
+li{
+    list-style: none;
+}
+p{
+    margin: 0;
+}
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+}
