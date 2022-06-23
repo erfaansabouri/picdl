@@ -27,6 +27,7 @@ class CreateDynamicSettingsTable extends Migration
             $table->text('youtube')->nullable()->comment('یوتوب');
             $table->text('facebook')->nullable()->comment('فیسبوک');
             $table->text('contact_us')->nullable()->comment('تماس با ما');
+            $table->text('rules')->nullable()->comment('قوانین و مقررات');
             $table->text('footer')->nullable()->comment('متن فوتر');
             $table->timestamps();
         });
@@ -42,6 +43,7 @@ class CreateDynamicSettingsTable extends Migration
         DynamicSetting::setData('youtube', 'https://youtube.com/picdl');
         DynamicSetting::setData('facebook', 'https://facebook.com/picdl');
         DynamicSetting::setData('contact_us', longText());
+        DynamicSetting::setData('rules', longText());
         DynamicSetting::setData('footer', mediumText());
 
     }

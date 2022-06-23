@@ -1,4 +1,4 @@
 @extends('website.master')
 @section('content')
-    @livewire('website.about-us')
+    @livewire('website.rules')
 @endsection

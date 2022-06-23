@@ -7,18 +7,24 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="rules.html">قوانین و مقررات</a>
+                            <a class="nav-link @if(\Illuminate\Support\Facades\Route::is('rules')) active text-success @endif" @if(\Illuminate\Support\Facades\Route::is('rules')) aria-current="page" @endif href="{{ route('rules') }}">قوانین و مقررات</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('about-us') }}">درباره ما</a>
+                            <a class="nav-link @if(\Illuminate\Support\Facades\Route::is('faqs')) active text-success @endif" @if(\Illuminate\Support\Facades\Route::is('faqs')) aria-current="page" @endif href="{{ route('faqs') }}">پرسش های متداول</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact-us') }}">تماس با ما</a>
+                            <a class="nav-link @if(\Illuminate\Support\Facades\Route::is('about-us')) active text-success @endif" @if(\Illuminate\Support\Facades\Route::is('about-us')) aria-current="page" @endif href="{{ route('about-us') }}">درباره ما</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link @if(\Illuminate\Support\Facades\Route::is('contact-us')) active text-success @endif" @if(\Illuminate\Support\Facades\Route::is('contact-us')) aria-current="page" @endif href="{{ route('contact-us') }}">تماس با ما</a>
+                        </li>
+                        @if(\Illuminate\Support\Facades\Auth::guard('web')->check())
+                            {{ \Illuminate\Support\Facades\Auth::user()->phone_number }}
+                        @endif
                     </ul>
                     <span class="navbar-text d-flex align-items-center">
                     <a href="login.html" class="login-nav-btn nav-btn btn-blue d-flex align-items-center">ورود / عضویت</a>
-                    <a href="credit-packages.html" class="buy-btn nav-btn btn-green d-flex align-items-center mr-2">خرید اعتبار</a>
+                    <a href="{{ route('credit-packages') }}" class="buy-btn nav-btn btn-green d-flex align-items-center mr-2">خرید اعتبار</a>
                   </span>
                 </div>
             </div>
