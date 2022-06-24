@@ -24,11 +24,11 @@
                         <li class="megamenu h-100 d-flex align-items-center">
                             <a href="#" class="profile-btn nav-btn d-flex align-items-center">{{ auth()->user()->profile_name }} <span class="icon-chevron-down"></span></a>
                             <ul class="sub-menu_profile sub-menu position-absolute bg-white">
-                                <li><a href="panel-dashboard.html">داشبورد</a></li>
+                                <li><a href="{{ route('profile.dashboard') }}">داشبورد</a></li>
                                 <li><a href="panel-buy.html">سوابق خرید</a></li>
                                 <li><a href="panel-download.html">سوابق دانلود</a></li>
                                 <li><a href="panel-support.html">پشتیبانی</a></li>
-                                <li><a href="panel-specifications.html">مشخصات</a></li>
+                                <li><a href="{{ route('profile.user-details') }}">مشخصات</a></li>
                                 <li><a href="{{ route('auth.logout') }}">خروج</a></li>
                             </ul>
                         </li>
@@ -61,16 +61,16 @@
                     </div>
                     <ul class="show-dropdown">
                         <li class="active">
-                            <a href="index.html">صفحه اصلی</a>
+                            <a href="{{ route('home') }}">صفحه اصلی</a>
                         </li>
                         <li>
-                            <a href="rules.html">قوانین و مقررات</a>
+                            <a href="{{ route('rules') }}">قوانین و مقررات</a>
                         </li>
                         <li>
-                            <a href="about.html">درباره ما</a>
+                            <a href="{{ route('about-us') }}">درباره ما</a>
                         </li>
                         <li>
-                            <a href="contact.html">تماس با ما</a>
+                            <a href="{{ route('contact-us') }}">تماس با ما</a>
                         </li>
                     </ul>
                 </div>
@@ -88,11 +88,11 @@
                     <li class="megamenu h-100 d-flex align-items-center">
                         <a href="#" class="profile-btn nav-btn d-flex align-items-center">{{ \Illuminate\Support\Facades\Auth::user()->profile_name }} <span class="icon-chevron-down"></span></a>
                         <ul class="sub-menu_profile sub-menu position-absolute bg-white">
-                            <li><a href="panel-dashboard.html">داشبورد</a></li>
+                            <li><a href="{{ route('profile.dashboard') }}">داشبورد</a></li>
                             <li><a href="panel-buy.html">سوابق خرید</a></li>
                             <li><a href="panel-download.html">سوابق دانلود</a></li>
                             <li><a href="panel-support.html">پشتیبانی</a></li>
-                            <li><a href="panel-specifications.html">مشخصات</a></li>
+                            <li><a href="{{ route('profile.user-details') }}">مشخصات</a></li>
                             <li><a href="{{ route('auth.logout') }}">خروج</a></li>
                         </ul>
                     </li>

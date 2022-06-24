@@ -69,3 +69,12 @@ Route::middleware([])->group(function () {
     Route::post('contact-us', [\App\Http\Controllers\ContactUsController::class, 'store'])->name('contact-us.store');
     Route::get('refresh-contact-us-captcha', [\App\Http\Controllers\ContactUsController::class, 'refreshCaptcha'])->name('contact-us.refresh-captcha');
 });
+
+
+Route::middleware(['auth:web'])->prefix('profile')->group(function () {
+    Route::get('dashboard', [\App\Http\Controllers\ProfileController::class, 'dashboard'])->name('profile.dashboard');
+    Route::get('user-details', [\App\Http\Controllers\ProfileController::class, 'userDetails'])->name('profile.user-details');
+    Route::put('user-details', [\App\Http\Controllers\ProfileController::class, 'updateDetails'])->name('profile.update-details');
+    Route::get('tickets', [\App\Http\Controllers\ProfileController::class, 'tickets'])->name('profile.tickets');
+
+});

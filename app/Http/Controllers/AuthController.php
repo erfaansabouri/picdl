@@ -16,8 +16,10 @@ class AuthController extends Controller
 
     public function postPhoneNumber(Request $request)
     {
+        $request->validate([
+            'phone_number' => ['required', 'regex:'. User::IRAN_PHONE_NUMBER_REGEX],
+        ]);
         $normalizedPhoneNumber = normalizePhoneNumber($request->phone_number);
-        // if user already exists and already set password
         if($user = User::query()->where('phone_number', $normalizedPhoneNumber)->whereNotNull('password')->first())
         {
             $token = encrypt($user);
@@ -114,6 +116,9 @@ class AuthController extends Controller
 
     public function getLoginWithPhoneNumberAndOtp(Request $request)
     {
+        $request->validate([
+            'phone_number' => ['required', 'regex:'.User::IRAN_PHONE_NUMBER_REGEX],
+        ]);
         $normalizedPhoneNumber = normalizePhoneNumber($request->phone_number);
         $user = User::query()->firstOrCreate([
             'phone_number' => $normalizedPhoneNumber,
