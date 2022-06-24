@@ -16,7 +16,6 @@
                             </div>
                             <button type="submit" class="login-btn btn-green">ورود / ثبت نام</button>
                             <p class="acceptance-rules my-4 text-center"> با ورود یا ثبت نام شما <a href="{{ route('rules') }}">قوانین </a> استفاده از پیک دی ال را می‌پذیرید. </p>
-                            <a href="#" class="forget-password text-center">اگر رمز عبور خود را فراموش کرده اید کلیک کنید</a>
                         </form>
                     </div>
                 </div>

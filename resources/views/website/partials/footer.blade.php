@@ -48,7 +48,7 @@
                                         <a href="{{ route('home') }}" class="footer-menu-link">صفحه نخست</a>
                                     </li>
                                     <li>
-                                        <a href="#"  class="footer-menu-link">رویه سفارش</a>
+                                        <a href="{{ route('auth.logout') }}"  class="footer-menu-link">خروج</a>
                                     </li>
                                     <li>
                                         <a href="#" class="footer-menu-link">رویه ارسال سفارش</a>

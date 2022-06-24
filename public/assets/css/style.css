@@ -353,7 +353,7 @@ h1, h2, h3, h4, h5, h6 {
   background: #31537c;
 }
 
-.login-nav-btn::after {
+.login-nav-btn::afte8r {
   content: "\e91e";
   color: #31537c;
 }

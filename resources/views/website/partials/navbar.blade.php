@@ -1,3 +1,6 @@
+@if(\Illuminate\Support\Facades\Auth::guard('web')->check())
+    @include('website.partials.auth-navbar')
+@else
 <!-- navbar -->
 <nav class="navbar navbar-expand-lg bg-white">
     <div class="container">
@@ -18,14 +21,11 @@
                         <li class="nav-item">
                             <a class="nav-link @if(\Illuminate\Support\Facades\Route::is('contact-us')) active text-success @endif" @if(\Illuminate\Support\Facades\Route::is('contact-us')) aria-current="page" @endif href="{{ route('contact-us') }}">تماس با ما</a>
                         </li>
-                        @if(\Illuminate\Support\Facades\Auth::guard('web')->check())
-                            {{ \Illuminate\Support\Facades\Auth::user()->phone_number }}
-                        @endif
                     </ul>
                     <span class="navbar-text d-flex align-items-center">
-                    <a href="login.html" class="login-nav-btn nav-btn btn-blue d-flex align-items-center">ورود / عضویت</a>
-                    <a href="{{ route('credit-packages') }}" class="buy-btn nav-btn btn-green d-flex align-items-center mr-2">خرید اعتبار</a>
-                  </span>
+                            <a href="{{ route('auth.get-phone-number-form') }}" class="login-nav-btn nav-btn btn-blue d-flex align-items-center">ورود / عضویت</a>
+                            <a href="{{ route('credit-packages') }}" class="buy-btn nav-btn btn-green d-flex align-items-center mr-2">خرید اعتبار</a>
+                    </span>
                 </div>
             </div>
         </div>
@@ -44,16 +44,16 @@
                     </div>
                     <ul class="show-dropdown">
                         <li class="active">
-                            <a href="index.html">صفحه اصلی</a>
+                            <a href="{{ route('home') }}">صفحه اصلی</a>
                         </li>
                         <li>
-                            <a href="rules.html">قوانین و مقررات</a>
+                            <a href="{{ route('rules') }}">قوانین و مقررات</a>
                         </li>
                         <li>
-                            <a href="about.html">درباره ما</a>
+                            <a href="{{ route('about-us') }}">درباره ما</a>
                         </li>
                         <li>
-                            <a href="contact.html">تماس با ما</a>
+                            <a href="{{ route('about-us') }}">تماس با ما</a>
                         </li>
                     </ul>
                 </div>
@@ -68,10 +68,11 @@
                     </div>
                 </div>
                 <div class="btns d-flex align-items-center justify-content-end">
-                    <a href="credit-packages.html" class="buy-btn nav-btn btn-green d-flex align-items-center mr-2">خرید اعتبار</a>
-                    <a href="login.html" class="login-nav-btn nav-btn btn-blue d-flex align-items-center">ورود / ثبت نام</a>
+                    <a href="{{ route('credit-packages') }}" class="buy-btn nav-btn btn-green d-flex align-items-center mr-2">خرید اعتبار</a>
+                    <a href="{{ route('auth.get-phone-number-form') }}" class="login-nav-btn nav-btn btn-blue d-flex align-items-center">ورود / ثبت نام</a>
                 </div>
             </div>
         </div>
     </div>
 </nav>
+@endif

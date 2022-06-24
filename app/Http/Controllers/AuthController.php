@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -19,21 +20,40 @@ class AuthController extends Controller
         // if user already exists and already set password
         if($user = User::query()->where('phone_number', $normalizedPhoneNumber)->whereNotNull('password')->first())
         {
-            // return to page login with password
-            return '1';
+            $token = encrypt($user);
+            return redirect()->route('auth.get-login-with-token-and-password', ['token' => $token]);
         }
         else
         {
             $user = User::query()->firstOrCreate([
                 'phone_number' => $normalizedPhoneNumber,
             ]);
-            // send otp
             $otp = rand(1000,9999);
             $user->otp = $otp;
             $user->save();
-            // return to page submit otp
             return redirect()->route('auth.get-otp-form', ['token' => encrypt($user)]);
         }
+    }
+
+    public function getLoginWithTokenAndPassword(Request $request)
+    {
+        return view('website.auth.get-enter-password-to-login');
+    }
+
+    public function postLoginWithTokenAndPassword(Request $request)
+    {
+        $request->validate([
+            'token' => ['required'],
+            'password' => ['required'],
+        ]);
+
+        $user = decrypt($request->token);
+        if(Hash::check($request->password, $user->password))
+        {
+            Auth::login($user);
+            return redirect()->route('auth.logged-in-successfully');
+        }
+        return redirect()->back()->withErrors(['invalid' => 'رمز نا معتبر است.']);
     }
 
     public function getOtpForm(Request $request)
@@ -54,11 +74,11 @@ class AuthController extends Controller
 
         if(empty($user->password))
         {
-            return redirect()->route('auth.get-new-password', ['token' => encrypt($user)]);
+            return redirect()->route('auth.get-new-password-form', ['token' => encrypt($user)]);
         }
 
         Auth::login($user);
-        return redirect()->route('home');
+        return redirect()->route('auth.logged-in-successfully');
     }
 
     public function getNewPasswordForm(Request $request)
@@ -71,7 +91,47 @@ class AuthController extends Controller
     {
         $user = decrypt($request->token);
         Auth::login($user);
-        return redirect()->route('home');
+        return redirect()->route('auth.logged-in-successfully');
+    }
+
+    public function postSetNewPassword(Request $request)
+    {
+        $request->validate([
+            'password' => ['required' ,'confirmed'],
+            'token' => ['required']
+        ]);
+        $user = decrypt($request->token);
+        $user->password = bcrypt($request->password);
+        $user->save();
+        Auth::login($user);
+        return redirect()->route('auth.logged-in-successfully');
+    }
+
+    public function loggedInSuccessfully()
+    {
+        return view('website.auth.logged-in-successfully');
+    }
+
+    public function getLoginWithPhoneNumberAndOtp(Request $request)
+    {
+        $normalizedPhoneNumber = normalizePhoneNumber($request->phone_number);
+        $user = User::query()->firstOrCreate([
+            'phone_number' => $normalizedPhoneNumber,
+        ]);
+        $otp = rand(1000,9999);
+        $user->otp = $otp;
+        $user->save();
+        return redirect()->route('auth.get-otp-form', ['token' => encrypt($user)]);
+    }
+
+    public function forgetPasswordGetOtp($token)
+    {
+        $user = decrypt($token);
+        $otp = rand(1000,9999);
+        $user->password = null;
+        $user->otp = $otp;
+        $user->save();
+        return redirect()->route('auth.get-otp-form', ['token' => $token]);
     }
 
     public function logout()

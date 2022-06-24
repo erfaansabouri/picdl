@@ -19,4 +19,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function getProfileNameAttribute()
+    {
+        if(!empty($this->full_name))
+            return $this->full_name;
+        return $this->phone_number;
+    }
+
 }
