@@ -33,7 +33,7 @@
                             </ul>
                         </li>
                         <li class="megamenu h-100 d-flex align-items-center">
-                            <a href="#" class="credit-inventory-btn nav-btn btn-green d-flex align-items-center mr-2"> اعتبار <span class="icon-chevron-down"></span></a>
+                            <a href="{{ route('credit-packages') }}" class="credit-inventory-btn nav-btn btn-green d-flex align-items-center mr-2"> اعتبار <span class="icon-chevron-down"></span></a>
                             <ul class="sub-menu_credit sub-menu position-absolute">
                                 <li class="text-center"><span class="text-center">{{ \Illuminate\Support\Facades\Auth::user()->credit_count }} اعتبار باقی مانده</span></li>
                             </ul>
