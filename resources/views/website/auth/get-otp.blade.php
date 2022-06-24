@@ -10,6 +10,7 @@
                             @csrf
                             @method('post')
                             <x-error></x-error>
+                            <p>{{ $user->otp }}</p>
                             <p class="login-subtitle d-flex align-items-center text-center">کد ارسال شده به شماره  {{ $user->phone_number }} را وارد نمایید.</p>
                             <div class="w-100 py-3 my-3">
                                 <div class="input-group d-flex align-items-center">
