@@ -9,7 +9,7 @@
                         <div class="title-section">
                             <div class="d-flex align-items-center justify-content-between">
                                 <h3 class="title__section d-flex align-items-center"><span class="icon-promotion"></span>پشتیبانی </h3>
-                                <a data-toggle="modal" data-target="#add-ticket" class="ticket-submit-btn btn-green title-section-btn d-flex align-items-center"><span class="icon-plus"></span>تیکت جدید </a>
+                                <a style="cursor: pointer" data-toggle="modal" data-target="#add-ticket" class="ticket-submit-btn btn-green title-section-btn d-flex align-items-center"><span class="icon-plus"></span>تیکت جدید </a>
                             </div>
                         </div>
                         @if(count($tickets) == 0)
@@ -23,6 +23,31 @@
                             <h4 class="ticket-list">لیست تیکت خالی است</h4>
                             <button type="button" data-toggle="modal" data-target="#add-ticket" class="ticket-submit-btn btn-green d-flex align-items-center"><span class="icon-plus"></span> ارسال تیکت جدید</button>
                         </div>
+                        @else
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>شناسه</th>
+                                    <th>موضوع</th>
+                                    <th>توضیحات</th>
+                                    <th>وضعیت</th>
+                                    <th>پاسخ مدیریت</th>
+                                    <th>تاریخ ایجاد</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($tickets as $ticket)
+                                    <tr>
+                                        <td>{{ $ticket->id }}</td>
+                                        <td>{{ $ticket->subject }}</td>
+                                        <td>{{ $ticket->description }}</td>
+                                        <td>{{ $ticket->status }}</td>
+                                        <td>{{ $ticket->admin_response ?? 'پاسخی ثبت نشده' }}</td>
+                                        <td>{{ $ticket->shamsi_created_at }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                         @endif
                     </div>
                 </div>
@@ -30,6 +55,42 @@
         </div>
     </section>
 
+    <!-- The Modal -->
+    <div class="modal" id="add-ticket">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">ایجاد تیکت جدید</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ route('profile.tickets.store') }}" method="post">
+                        @csrf
+                        @method('post')
+                        <div class="form-group">
+                            <label for="comment">موضوع:</label>
+                            <input class="form-control" name="subject">
+                        </div>
+
+                        <div class="mt-3 form-group">
+                            <label for="comment">توضیحات:</label>
+                            <textarea class="form-control" rows="5" name="description"></textarea>
+                        </div>
+
+                        <button type="submit" class="mt-3 btn btn-success">ارسال</button>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
 @endsection

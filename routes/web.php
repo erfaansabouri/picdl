@@ -76,5 +76,6 @@ Route::middleware(['auth:web'])->prefix('profile')->group(function () {
     Route::get('user-details', [\App\Http\Controllers\ProfileController::class, 'userDetails'])->name('profile.user-details');
     Route::put('user-details', [\App\Http\Controllers\ProfileController::class, 'updateDetails'])->name('profile.update-details');
     Route::get('tickets', [\App\Http\Controllers\ProfileController::class, 'tickets'])->name('profile.tickets');
+    Route::post('tickets/store', [\App\Http\Controllers\ProfileController::class, 'storeTicket'])->name('profile.tickets.store');
 
 });

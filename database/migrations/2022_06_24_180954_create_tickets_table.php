@@ -15,12 +15,11 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parent_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->text('subject')->nullable();
             $table->text('description')->nullable();
             $table->text('status')->nullable()->default('در انتظار پاسخ');
-            $table->text('from')->nullable();
+            $table->text('admin_response')->nullable();
             $table->timestamps();
         });
     }

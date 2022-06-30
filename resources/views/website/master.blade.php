@@ -3,15 +3,15 @@
 @endphp
 <!DOCTYPE html>
 <html lang="en">
-@include('website.partials.head')
 @livewireStyles
+@include('website.partials.head')
 <body>
 @include('sweet::alert')
 @include('website.partials.navbar')
 @yield('content')
 @include('website.partials.footer')
-@include('website.partials.scripts')
 @livewireScripts
+@include('website.partials.scripts')
 @stack('scripts')
 </body>
 </html>

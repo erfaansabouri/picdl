@@ -45,10 +45,26 @@ class ProfileController extends Controller
         $user = Auth::user();
         $tickets = Ticket::query()
             ->where('user_id', $user->id)
-            ->where('parent_id', null)
             ->get();
 
         return view('website.profile.tickets', compact('tickets'));
+    }
+
+    public function storeTicket(Request $request)
+    {
+        $request->validate([
+            'subject' => ['required'],
+            'description' => ['required'],
+        ]);
+        $user = Auth::user();
+        $tickets = Ticket::query()
+            ->create([
+                'user_id' => $user->id,
+                'subject' => $request->subject,
+                'description' => $request->description,
+            ]);
+
+        return redirect()->route('profile.tickets');
     }
 }
 
