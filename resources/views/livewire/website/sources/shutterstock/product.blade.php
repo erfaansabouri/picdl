@@ -78,7 +78,9 @@
                                 <div id="photos">
                                     @if($loadProduct)
                                         @foreach(@$similar_products->data ?? [] as $similar_product)
-                                            <img src="{{ $similar_product->assets->huge_thumb->url }}">
+                                            <a href="{{ route('sources.shutter-stock.show', $similar_product->id) }}">
+                                                <img src="{{ $similar_product->assets->huge_thumb->url }}">
+                                            </a>
                                         @endforeach
                                     @endif
                                 </div>
