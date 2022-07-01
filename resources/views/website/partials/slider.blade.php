@@ -1,3 +1,4 @@
+@if(\App\Models\Slider::query()->count())
 <header class="header">
     <div class="container-fluid bg-dark p-0">
         <div class="col-lg-12">
@@ -15,3 +16,4 @@
         </div>
     </div>
 </header>
+@endif
