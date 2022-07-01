@@ -61,4 +61,32 @@
             </div>
         </div>
     </section>
+
+    <!-- Similar items  -->
+    <section class="similar-items mt-4" wire:init="loadProduct">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="box-section bg-white py-3 px-4">
+                        <div class="title-section">
+                            <div class="d-flex align-items-end justify-content-between">
+                                <h3 class="title__section d-flex align-items-center"><span class="icon-magnifying-glass icon__search"></span>آیتم های مشابه </h3>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center w-100 flex-column">
+                            <div class="image-gallery">
+                                <div id="photos">
+                                    @if($loadProduct)
+                                        @foreach(@$similar_products->data ?? [] as $similar_product)
+                                            <img src="{{ $similar_product->assets->huge_thumb->url }}">
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>

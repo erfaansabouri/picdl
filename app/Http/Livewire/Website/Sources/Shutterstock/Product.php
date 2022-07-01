@@ -22,6 +22,7 @@ class Product extends Component
     public function render()
     {
         $product = getSingleImageShutterstock($this->shutterstock_id) ?? null;
-        return view('livewire.website.sources.shutterstock.product', ['product' => $product]);
+        $similarProducts = getSimilarImagesShutterstock($product) ?? null;
+        return view('livewire.website.sources.shutterstock.product', ['product' => $product , 'similar_products' => $similarProducts]);
     }
 }

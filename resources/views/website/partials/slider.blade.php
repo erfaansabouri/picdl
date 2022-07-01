@@ -16,4 +16,6 @@
         </div>
     </div>
 </header>
+@else
+    <div class="mb-4"></div>
 @endif
