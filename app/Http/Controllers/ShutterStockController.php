@@ -9,9 +9,7 @@ class ShutterStockController extends Controller
 
     public function show($shutterstock_id)
     {
-        //$result = getSingleImageShutterstock($shutterstock_id);
         return view('website.sources.shutterstock.show', compact('shutterstock_id'));
-        dd($result);
     }
 
     public function test()

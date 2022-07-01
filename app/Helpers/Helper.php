@@ -30,7 +30,7 @@ function getSingleImageShutterstock($id)
     curl_close($handle);
 
     $result =  json_decode($response);
-        /*if(@$result->message == "Not Found" or empty($result))
-            abort(404);*/
+    if(@$result->message == "Not Found" or empty($result))
+        abort(404);
     return $result;
 }
