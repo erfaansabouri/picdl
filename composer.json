@@ -14,7 +14,9 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.10",
         "mews/captcha": "^3.2",
-        "uxweb/sweet-alert": "^2.0"
+        "uxweb/sweet-alert": "^2.0",
+      "ext-curl": "*",
+        "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
