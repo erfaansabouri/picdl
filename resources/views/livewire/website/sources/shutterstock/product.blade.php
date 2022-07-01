@@ -89,4 +89,27 @@
             </div>
         </div>
     </section>
+
+    <section class="similar-keywords mt-4" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="box-section bg-white py-3 px-4">
+                        <div class="title-section">
+                            <div class="d-flex align-items-end justify-content-between">
+                                <h3 class="title__section d-flex align-items-center"><span class="icon-magnifying-glass icon__search"></span> کلمات کلیدی مشابه </h3>
+                            </div>
+                        </div>
+                        <div class="key-words d-flex align-items-center w-100 flex-wrap">
+                            @if($loadProduct)
+                                @foreach(@$product->keywords ?? [] as $keyword)
+                                    <a href="#" class="key-words_link d-flex align-items-center justify-content-center">{{ $keyword }}</a>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
