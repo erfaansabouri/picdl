@@ -69,8 +69,18 @@ Route::middleware([])->group(function () {
     Route::get('contact-us', [\App\Http\Controllers\ContactUsController::class, 'index'])->name('contact-us');
     Route::post('contact-us', [\App\Http\Controllers\ContactUsController::class, 'store'])->name('contact-us.store');
     Route::get('refresh-contact-us-captcha', [\App\Http\Controllers\ContactUsController::class, 'refreshCaptcha'])->name('contact-us.refresh-captcha');
-    Route::get('shutter-test', [\App\Http\Controllers\ShutterStockController::class, 'test'])->name('shutter-test');
-    Route::get('shutter-test-api', [\App\Http\Controllers\ShutterStockController::class, 'testApi'])->name('shutter-test-api');
+
+    Route::middleware([])->prefix('sources')->group(function () {
+
+        Route::middleware([])->prefix('shutterstock')->group(function () {
+            Route::get('/{shutterstock_id}', [\App\Http\Controllers\ShutterStockController::class, 'show'])->name('sources.shutter-stock.show');
+        });
+
+        Route::get('shutter-test', [\App\Http\Controllers\ShutterStockController::class, 'test'])->name('shutter-test');
+        Route::get('shutter-test-api', [\App\Http\Controllers\ShutterStockController::class, 'testApi'])->name('shutter-test-api');
+        Route::get('shutter-test-show-api', [\App\Http\Controllers\ShutterStockController::class, 'showSingleApi'])->name('shutter-test-show-api');
+    });
+
 });
 
 
