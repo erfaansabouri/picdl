@@ -62,6 +62,7 @@ Route::middleware([])->prefix('auth')->group(function () {
 Route::middleware([])->group(function () {
     Route::get('', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('about-us', [\App\Http\Controllers\AboutUsController::class, 'index'])->name('about-us');
+    Route::get('blog-posts/{id}', [\App\Http\Controllers\BlogPostController::class, 'show'])->name('blog-posts.show');
     Route::get('rules', [\App\Http\Controllers\RulesController::class, 'index'])->name('rules');
     Route::get('credit-packages', [\App\Http\Controllers\CreditPackageController::class, 'index'])->name('credit-packages');
     Route::get('faqs', [\App\Http\Controllers\FaqController::class, 'index'])->name('faqs');

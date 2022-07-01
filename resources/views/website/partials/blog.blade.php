@@ -1,3 +1,4 @@
+@if(\App\Models\BlogPost::query()->count())
 <section class="blog">
     <div class="container">
         <div class="row">
@@ -9,69 +10,25 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3 mb-3">
-                            <a href="#" class="blog-cart">
-                                <div class="blog-cart_img">
-                                    <div class="blog-cart_img__inner">
-                                        <img src="{{ asset('assets/img/construction-worker.png') }}" alt="">
+                        @foreach(\App\Models\BlogPost::all() as $blogPost)
+                            <div class="col-lg-3 mb-3">
+                                <a href="{{ route('blog-posts.show', $blogPost->id) }}" class="blog-cart">
+                                    <div class="blog-cart_img">
+                                        <div class="blog-cart_img__inner">
+                                            <img src="{{ getPublicImage($blogPost->file_path) }}" alt="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex align-items-start justify-content-between flex-column">
-                                    <p class="blog-cart_title d-flex align-items-center"><span class="icon-arrow"></span>تصاویر صنعتی</p>
-                                    <p class="blog-cart_text">برای دانلـود ایــن تصاویر باید به سایت پیک دی ال
-                                        مراجعه و از بخش دانلود تصاویر مراجعه و بعد به
-                                        بخش مربوطه مراجعه نمایید ....</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-3 mb-3">
-                            <a href="#" class="blog-cart">
-                                <div class="blog-cart_img">
-                                    <div class="blog-cart_img__inner">
-                                        <img src="{{ asset('assets/img/construction-worker.png') }}" alt="">
+                                    <div class="d-flex align-items-start justify-content-between flex-column">
+                                        <p class="blog-cart_title d-flex align-items-center"><span class="icon-arrow"></span>{{ $blogPost->title }}</p>
+                                        <p class="blog-cart_text">{{ $blogPost->small_description }}</p>
                                     </div>
-                                </div>
-                                <div class="d-flex align-items-start justify-content-between flex-column">
-                                    <p class="blog-cart_title d-flex align-items-center"><span class="icon-arrow"></span>تصاویر جاذبه های گردشگری تصاویر جاذبه های گردشگری </p>
-                                    <p class="blog-cart_text">برای دانلـود ایــن تصاویر باید به سایت پیک دی ال
-                                        مراجعه و از بخش دانلود تصاویر مراجعه و بعد به
-                                        بخش مربوطه مراجعه نمایید ....</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-3 mb-3">
-                            <a href="#" class="blog-cart">
-                                <div class="blog-cart_img">
-                                    <div class="blog-cart_img__inner">
-                                        <img src="{{ asset('assets/img/construction-worker.png') }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-start justify-content-between flex-column">
-                                    <p class="blog-cart_title d-flex align-items-center"><span class="icon-arrow"></span>تصاویر صنعتی</p>
-                                    <p class="blog-cart_text">برای دانلـود ایــن تصاویر باید به سایت پیک دی ال
-                                        مراجعه و از بخش دانلود تصاویر مراجعه و بعد به
-                                        بخش مربوطه مراجعه نمایید ....</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-3 mb-3">
-                            <a href="#" class="blog-cart">
-                                <div class="blog-cart_img">
-                                    <div class="blog-cart_img__inner">
-                                        <img src="{{ asset('assets/img/construction-worker.png') }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-start justify-content-between flex-column">
-                                    <p class="blog-cart_title d-flex align-items-center"><span class="icon-arrow"></span>تصاویر صنعتی</p>
-                                    <p class="blog-cart_text">برای دانلـود ایــن تصاویر باید به سایت پیک دی ال
-                                        مراجعه و از بخش دانلود تصاویر مراجعه و بعد به
-                                        بخش مربوطه مراجعه نمایید ....</p>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+@endif
