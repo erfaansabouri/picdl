@@ -13,17 +13,17 @@
                         <a href="#" class="sites-img d-flex align-items-center justify-content-center"><img src="{{ asset('assets/img/sites/freepik.png') }}" alt=""></a>
                     </div>
                     <h2 class="search-title text-center my-3">جستجو در بین بیش از 2 میلیون تصویر و وکتور سایت شاتراستوک</h2>
-                    <form action="" class="search-group d-flex align-items-center flex-column">
+                    <form action="{{ route('sources.shutter-stock.index') }}" class="search-group d-flex align-items-center flex-column">
                         <div class="search_items d-flex align-items-center justify-content-center w-100">
-                            <input type="text" placeholder="لینک یا کد عکس مد نظر در شاتراستوک یا عنوان مد نظر را برای جستجو در این قسمت وارد کنید ....">
+                            <input name="q" type="text" placeholder="لینک یا کد عکس مد نظر در شاتراستوک یا عنوان مد نظر را برای جستجو در این قسمت وارد کنید ....">
                             <button type="submit" class="search-btn btn-green d-flex align-items-center justify-content-center">جستجو<span class="icon-magnifying-glass"></span></button>
                         </div>
                         <div class="tags my-3 d-flex align-items-center justify-content-center flex-wrap align-items-center">
                             <p>بیشترین جستجو ها:</p>
-                            <span>#منظره</span>
-                            <span>#محتوا</span>
-                            <span>#گربه</span>
-                            <span>#طبیعت</span>
+                            <span><a href="{{ route('sources.shutter-stock.index', ['q' => 'cat']) }}">#cat</a></span>
+                            <span><a href="{{ route('sources.shutter-stock.index', ['q' => 'dog']) }}">#dog</a></span>
+                            <span><a href="{{ route('sources.shutter-stock.index', ['q' => 'green']) }}">#green</a></span>
+                            <span><a href="{{ route('sources.shutter-stock.index', ['q' => 'bag']) }}">#bag</a></span>
                         </div>
                     </form>
                 </div>

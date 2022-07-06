@@ -6,6 +6,17 @@ use Illuminate\Http\Request;
 
 class ShutterStockController extends Controller
 {
+    public function index(Request $request)
+    {
+        if(is_numeric($request->q))
+        {
+            $shutterstock_id = $request->q;
+            return view('website.sources.shutterstock.show', compact('shutterstock_id'));
+        }
+        $result = getImagesShutterstock($request->q,1,10);
+        $q = $request->q;
+        return view('website.sources.shutterstock.index', compact('result', 'q'));
+    }
 
     public function show($shutterstock_id)
     {

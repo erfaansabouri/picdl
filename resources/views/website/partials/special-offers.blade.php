@@ -19,7 +19,7 @@
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <p class="special-offers-cart_title d-flex align-items-center "><span class="icon-arrow"></span>{{ $homepageOffer->title }}</p>
-                                        <a href="#" class="view-btn btn-green">مشاهده</a>
+                                        <a href="{{ $homepageOffer->href }}" class="view-btn btn-green">مشاهده</a>
                                     </div>
                                 </div>
                             </div>
