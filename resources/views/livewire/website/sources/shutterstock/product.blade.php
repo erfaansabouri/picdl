@@ -49,10 +49,20 @@
                                     @if($loadProduct)
                                     <p class="description-text">{{ @$product->description }}</p>
                                     @endif
-                                    <div class="product_btns d-flex align-items-center justify-content-evenly mt-4">
-                                        <a href="credit-packages.html" class="buy-btn btn-blue d-flex align-items-center justify-content-center">خرید بسته اعتباری</a>
-                                        <a href="#"  class="single-purchase-btn btn-green d-flex align-items-center justify-content-center"> خرید تکی ، 25/000 تومان</a>
+                                    @if(auth()->user()->credit_count >= getSourceCreditForSingleFile(1, @$product->image_type))
+                                    <div class="d-flex align-items-center justify-content-evenly mt-4">
+                                        <div class="download-box d-flex flex-column align-items-center justify-content-center">
+                                            <span class="residual-credit">دانلود {{ getSourceCreditForSingleFile(1, @$product->image_type) }} از {{ auth()->user()->credit_count }} اعتبار با قیمانده</span>
+                                            <a href="{{ route('sources.shutter-stock.download', @$product->id) }}" class="down-btn btn-green d-flex align-items-center justify-content-center">دانلود<span class="icon-download"></span></a>
+                                            </a>
+                                        </div>
                                     </div>
+                                    @else
+                                        <div class="product_btns d-flex align-items-center justify-content-evenly mt-4">
+                                            <a href="credit-packages.html" class="buy-btn btn-blue d-flex align-items-center justify-content-center">خرید بسته اعتباری</a>
+                                            <a href="#"  class="single-purchase-btn btn-green d-flex align-items-center justify-content-center"> خرید تکی ، 25/000 تومان</a>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

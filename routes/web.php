@@ -75,6 +75,7 @@ Route::middleware([])->group(function () {
         Route::middleware([])->prefix('shutterstock')->group(function () {
             Route::get('/', [\App\Http\Controllers\ShutterStockController::class, 'index'])->name('sources.shutter-stock.index');
             Route::get('/{shutterstock_id}', [\App\Http\Controllers\ShutterStockController::class, 'show'])->name('sources.shutter-stock.show');
+            Route::get('download/{shutterstock_id}', [\App\Http\Controllers\ShutterStockController::class, 'download'])->name('sources.shutter-stock.download');
         });
 
         Route::get('shutter-test', [\App\Http\Controllers\ShutterStockController::class, 'test'])->name('shutter-test');
