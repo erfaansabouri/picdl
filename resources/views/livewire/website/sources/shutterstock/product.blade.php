@@ -49,7 +49,7 @@
                                     @if($loadProduct)
                                     <p class="description-text">{{ @$product->description }}</p>
                                     @endif
-                                    @if(auth()->user()->credit_count >= getSourceCreditForSingleFile(1, @$product->image_type))
+                                    @if(\Illuminate\Support\Facades\Auth::check() &&  auth()->user()->credit_count >= getSourceCreditForSingleFile(1, @$product->image_type))
                                     <div class="d-flex align-items-center justify-content-evenly mt-4">
                                         <div class="download-box d-flex flex-column align-items-center justify-content-center">
                                             <span class="residual-credit">دانلود {{ getSourceCreditForSingleFile(1, @$product->image_type) }} از {{ auth()->user()->credit_count }} اعتبار با قیمانده</span>
