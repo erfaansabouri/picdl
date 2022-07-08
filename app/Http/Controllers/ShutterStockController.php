@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Download;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +35,11 @@ class ShutterStockController extends Controller
         {
             $link = Download::getDownloadLink(1, $shutterstock_id);
             if(!$link) abort(404);
-            return dd($link);
+            $user->credit_count -= getSourceCreditCostForSingleFile(1,$product->media_type);
+            $user->save();
+
+            $full_path = getenv('APP_URL').'/storage/'.$link->path;
+            return redirect($full_path);
         }
 
     }

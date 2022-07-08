@@ -26,7 +26,7 @@ class Source extends Model
                         $download = $this->saveToDownloads($mediaId, $file->id);
                         if($download)
                         {
-                            return $file->private_download_link;
+                            return $file;
                         }
                     }
                 }

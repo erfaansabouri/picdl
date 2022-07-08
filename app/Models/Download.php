@@ -42,7 +42,7 @@ class Download extends Model
             ->where('code', $mediaId)
             ->first();
         if($download) {
-            return $download->file->private_download_link;
+            return $download->file;
         }
         return false;
     }
