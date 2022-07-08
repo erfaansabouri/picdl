@@ -161,22 +161,41 @@ function getImagesShutterstock($query, $page = 1, $per_page = 10)
     return [];
 }
 
-function getSourceCreditForSingleFile($source_id, $file_type = 'image')
+function getSourceCreditCostForSingleFile($source_id, $media_type = 'image')
 {
     $source = \App\Models\Source::query()
         ->where('id', $source_id)->first();
 
     if ($source)
     {
-        switch ($file_type){
+        switch ($media_type){
             case 'image':
-                return $source->cost_per_image;
+                return $source->credit_cost_per_image;
             case 'vector':
-                return $source->cost_per_vector;
+                return $source->credit_cost_per_vector;
             case 'film':
-                return $source->cost_per_film;
+                return $source->credit_cost_per_film;
         }
     }
+    return 99;
+}
 
-    return 1;
+
+function getSourcePriceCostForSingleFile($source_id, $media_type = 'image')
+{
+    $source = \App\Models\Source::query()
+        ->where('id', $source_id)->first();
+
+    if ($source)
+    {
+        switch ($media_type){
+            case 'image':
+                return $source->price_cost_per_image;
+            case 'vector':
+                return $source->price_cost_per_vector;
+            case 'film':
+                return $source->price_cost_per_film;
+        }
+    }
+    return 99;
 }

@@ -8,8 +8,8 @@
                 </a>
             </li>
             <li>
-                <a href="panel-buy.html" class="panel-menu_link d-flex align-items-center">
-                    سوابق خرید
+                <a href="{{ route('profile.transactions') }}" class="panel-menu_link d-flex align-items-center">
+                    تراکنش ها
                     <span class="icon-chevron-thin-down"></span>
                 </a>
             </li>

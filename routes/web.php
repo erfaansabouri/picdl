@@ -83,11 +83,18 @@ Route::middleware([])->group(function () {
         Route::get('shutter-test-show-api', [\App\Http\Controllers\ShutterStockController::class, 'showSingleApi'])->name('shutter-test-show-api');
     });
 
+
+    Route::middleware([])->prefix('payment')->group(function () {
+        Route::get('send', [\App\Http\Controllers\PaymentController::class , 'send'])->name('payment.send');
+        Route::get('verify', [\App\Http\Controllers\PaymentController::class , 'verify'])->name('payment.verify');
+    });
+
 });
 
 
 Route::middleware(['auth:web'])->prefix('profile')->group(function () {
     Route::get('dashboard', [\App\Http\Controllers\ProfileController::class, 'dashboard'])->name('profile.dashboard');
+    Route::get('transactions', [\App\Http\Controllers\ProfileController::class, 'transactions'])->name('profile.transactions');
     Route::get('user-details', [\App\Http\Controllers\ProfileController::class, 'userDetails'])->name('profile.user-details');
     Route::put('user-details', [\App\Http\Controllers\ProfileController::class, 'updateDetails'])->name('profile.update-details');
     Route::get('tickets', [\App\Http\Controllers\ProfileController::class, 'tickets'])->name('profile.tickets');

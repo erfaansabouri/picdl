@@ -20,19 +20,17 @@
                             <div class="col-lg-7 mb-3">
                                 <ul class="tabs d-inline-flex">
                                     <li>
-                                        <a href="#tab1" class="day date-item">Vector</a>
-                                    </li>
-                                    <li>
-                                        <a href="#tab2" class="month date-item">JPEG </a>
+                                        <a href="#tab1" class="day date-item">
+                                            @if($loadProduct)
+                                                {{ strtoupper(@$product->media_type) }}
+                                            @else
+                                                در حال پردازش
+                                            @endif
+                                        </a>
                                     </li>
                                 </ul>
                                 <div class="tabContainer pt-3">
-
                                     <div id="tab1" class="tabContent">
-                                        <p> عکس های vector دارای قابلیت تغییر اندازه عکس بدون کم شدن از کیفیت عکس هستند .</p>
-                                    </div>
-
-                                    <div id="tab2" class="tabContent">
                                         @if($loadProduct)
                                             @foreach(@$product->assets ?? [] as $asset)
                                                 @if(!empty(@$asset->display_name))
@@ -48,20 +46,7 @@
                                     <h4 class="description-title mb-2">توضیحات شاتراستاک :</h4>
                                     @if($loadProduct)
                                     <p class="description-text">{{ @$product->description }}</p>
-                                    @endif
-                                    @if(\Illuminate\Support\Facades\Auth::check() &&  auth()->user()->credit_count >= getSourceCreditForSingleFile(1, @$product->image_type))
-                                    <div class="d-flex align-items-center justify-content-evenly mt-4">
-                                        <div class="download-box d-flex flex-column align-items-center justify-content-center">
-                                            <span class="residual-credit">دانلود {{ getSourceCreditForSingleFile(1, @$product->image_type) }} از {{ auth()->user()->credit_count }} اعتبار با قیمانده</span>
-                                            <a href="{{ route('sources.shutter-stock.download', @$product->id) }}" class="down-btn btn-green d-flex align-items-center justify-content-center">دانلود<span class="icon-download"></span></a>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    @else
-                                        <div class="product_btns d-flex align-items-center justify-content-evenly mt-4">
-                                            <a href="credit-packages.html" class="buy-btn btn-blue d-flex align-items-center justify-content-center">خرید بسته اعتباری</a>
-                                            <a href="#"  class="single-purchase-btn btn-green d-flex align-items-center justify-content-center"> خرید تکی ، 25/000 تومان</a>
-                                        </div>
+                                    <x-buy-button :product="@$product"></x-buy-button>
                                     @endif
                                 </div>
                             </div>

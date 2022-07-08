@@ -16,18 +16,24 @@ class CreateSourcesTable extends Migration
         Schema::create('sources', function (Blueprint $table) {
             $table->id();
             $table->string('website',255)->nullable();
-            $table->integer('cost_per_image')->default(0);
-            $table->integer('cost_per_vector')->default(0);
-            $table->integer('cost_per_film')->default(0);
+            $table->double('credit_cost_per_image')->default(0);
+            $table->double('credit_cost_per_vector')->default(0);
+            $table->double('credit_cost_per_film')->default(0);
+            $table->double('price_cost_per_image')->default(0);
+            $table->double('price_cost_per_vector')->default(0);
+            $table->double('price_cost_per_film')->default(0);
             $table->timestamps();
         });
 
         \App\Models\Source::query()
             ->create([
                 'website' => 'شاتر استوک',
-                'cost_per_image' => 1,
-                'cost_per_vector' => 2,
-                'cost_per_film' => 3,
+                'credit_cost_per_image' => 1,
+                'credit_cost_per_vector' => 2,
+                'credit_cost_per_film' => 3,
+                'price_cost_per_image' => 10000,
+                'price_cost_per_vector' => 20000,
+                'price_cost_per_film' => 30000,
             ]);
     }
 

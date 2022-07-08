@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,34 @@ class ProfileController extends Controller
 {
     public function dashboard()
     {
-        return view('website.profile.dashboard');
+        $user = Auth::guard('web')->user();
+
+        $transactions = Transaction::query()
+            ->where('user_id', $user->id)
+            ->orderByDesc('id')
+            ->take(3)
+            ->get();
+
+
+        return view('website.profile.dashboard', compact('transactions', 'user'));
+    }
+
+    public function transactions(Request $request)
+    {
+        $user = Auth::guard('web')->user();
+
+        $transactions = Transaction::query()
+            ->where('user_id', $user->id);
+
+        if($request->search)
+        {
+            $transactions = $transactions->where('authority', 'like', '%'.$request->search.'%');
+        }
+
+        $transactions = $transactions->get();
+
+        return view('website.profile.transactions', compact('transactions'));
+
     }
 
     public function userDetails()

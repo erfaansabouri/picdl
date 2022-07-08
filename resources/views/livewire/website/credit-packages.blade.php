@@ -14,7 +14,7 @@
                                 <div class="buy-package_item p-2 d-flex align-items-center justify-content-between mb-3">
                                     <p class="text-center">بسته {{ $creditPackage->count }} اعتباری</p>
                                     <p class="text-center">{{ number_format($creditPackage->price) }} تومان</p>
-                                    <a href="#" class="buy-btn btn-green text-center">خرید</a>
+                                    <a href="{{ route('payment.send', ['credit_package_id' => $creditPackage->id]) }}" class="buy-btn btn-green text-center">خرید</a>
                                 </div>
                             @endforeach
                         </div>

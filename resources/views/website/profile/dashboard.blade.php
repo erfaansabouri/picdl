@@ -11,11 +11,14 @@
                                 <h3 class="title__section d-flex align-items-center"><span class="icon-crystal-ball"></span>اعتبار</h3>
                             </div>
                         </div>
+                        @if($user->credit_count == 0)
                         <div class="credit-emptiness d-flex flex-column align-items-center justify-content-center">
                             <h3>شما بسته فعالی ندارید</h3>
-                            <a href="../credit-packages.html" class="btn-buy btn-green">برای خرید اینجا کلیک کنید</a>
+                            <a href="{{ route('credit-packages') }}" class="btn-buy btn-green">برای خرید اینجا کلیک کنید</a>
                         </div>
-                        <!-- <h3 class="active-package text-center ">بسته فعال : 10 اعتبار (باقیمانده: 7 اعتبار)</h3> -->
+                        @else
+                            <h3 class="active-package text-center ">اعتبار باقی مانده: {{ $user->credit_count }} عدد</h3>
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-6 mb-3">
@@ -51,42 +54,11 @@
                     <div class="box-section bg-white p-3">
                         <div class="title-section">
                             <div class="d-flex align-items-center justify-content-between">
-                                <h3 class="title__section d-flex align-items-center"><span class="icon-promotion"></span>سوابق خرید</h3>
-                                <a href="#" class="more-view-btn btn-blue">مشاهده بیشتر</a>
+                                <h3 class="title__section d-flex align-items-center"><span class="icon-promotion"></span>تراکنش ها</h3>
+                                <a href="{{ route('profile.transactions') }}" class="more-view-btn btn-blue">مشاهده بیشتر</a>
                             </div>
                         </div>
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>ردیف</th>
-                                <th>شماره سفارش</th>
-                                <th>نوع گردش</th>
-                                <th>سایت</th>
-                                <th>پرداخت</th>
-                                <th>قیمت(تومان)</th>
-                                <th>تخفیف</th>
-                                <th>مبلغ(تومان)</th>
-                                <th>تاریخ خرید</th>
-                                <th>اعتبار باقیمانده</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td data-label="ردیف">1</td>
-                                <td data-label="شماره سفارش">1236544</td>
-                                <td data-label="نوع گردش">خرید فایل تکی
-                                    12312555
-                                </td>
-                                <td data-label="سایت">Shutterstock</td>
-                                <td data-label="پرداخت">آنلاین / ملت / کد رهگیری</td>
-                                <td data-label="قیمت(تومان)">000/25</td>
-                                <td data-label="تخفیف">-</td>
-                                <td data-label="مبلغ(تومان)">000/25</td>
-                                <td data-label="تاریخ خرید">18/02/1401</td>
-                                <td data-label="اعتبار باقیمانده">-</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <x-transactions-table :transactions="@$transactions"></x-transactions-table>
                     </div>
                 </div>
             </div>
