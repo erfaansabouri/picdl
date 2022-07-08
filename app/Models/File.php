@@ -9,4 +9,9 @@ class File extends Model
 {
     protected $table = 'files';
     protected $guarded = [];
+
+    public function getPrivateDownloadLinkAttribute()
+    {
+        dd('pv link'); // TODO
+    }
 }

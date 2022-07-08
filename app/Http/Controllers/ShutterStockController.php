@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Download;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ShutterStockController extends Controller
 {
@@ -25,23 +27,11 @@ class ShutterStockController extends Controller
 
     public function download($shutterstock_id)
     {
-        $link = licenseShutterstock($shutterstock_id, '-');
+        $link = Download::getDownloadLink(1, $shutterstock_id);
         if(!$link) abort(404);
-
-        // todo : save user download log
-
-        return redirect($link);
+        return dd($link);
     }
 
-    public function test()
-    {
-        return getSubscribeInfoShutterstock();
-    }
-
-    public function testApi()
-    {
-        return ;
-    }
 
     public function showSingleApi()
     {

@@ -20,7 +20,6 @@ class ProfileController extends Controller
             ->take(3)
             ->get();
 
-
         return view('website.profile.dashboard', compact('transactions', 'user'));
     }
 

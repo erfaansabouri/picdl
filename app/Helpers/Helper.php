@@ -34,7 +34,7 @@ function getSubscribeInfoShutterstock()
     dd($decodedResponse);
 }
 
-function licenseShutterstock($image_id, $subscription_id)
+function licenseShutterstock($image_id, $subscription_id = '')
 {
     $SHUTTERSTOCK_API_TOKEN = getenv('SHUTTERSTOCK_API');
 
