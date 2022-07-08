@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Download;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,11 +26,17 @@ class ShutterStockController extends Controller
         return view('website.sources.shutterstock.show', compact('shutterstock_id'));
     }
 
-    public function download($shutterstock_id)
+    public function downloadViaCredit($shutterstock_id)
     {
-        $link = Download::getDownloadLink(1, $shutterstock_id);
-        if(!$link) abort(404);
-        return dd($link);
+        $user = Auth::guard('web')->user();
+        $product = getSingleImageShutterstock($shutterstock_id);
+        if($user->credit_count >= getSourceCreditCostForSingleFile(1,$product->media_type))
+        {
+            $link = Download::getDownloadLink(1, $shutterstock_id);
+            if(!$link) abort(404);
+            return dd($link);
+        }
+
     }
 
 

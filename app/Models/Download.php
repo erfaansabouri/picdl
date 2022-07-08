@@ -51,7 +51,7 @@ class Download extends Model
     {
         $source = Source::find($sourceId);
         if($source) {
-            $source->getDownloadLink($mediaId);
+            return $source->getDownloadLink($mediaId);
         }
         return false;
     }

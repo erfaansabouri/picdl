@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class File extends Model
 {
@@ -12,6 +13,7 @@ class File extends Model
 
     public function getPrivateDownloadLinkAttribute()
     {
-        dd('pv link'); // TODO
+        $f = Storage::download(storage_path('public/'.$this->path));
+        dd($f); // TODO
     }
 }

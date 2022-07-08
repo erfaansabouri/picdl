@@ -8,6 +8,7 @@ class Product extends Component
 {
     public $shutterstock_id;
     public $loadProduct = false;
+    public $showDownloadButton = true;
 
     public function mount($shutterstock_id)
     {
@@ -24,5 +25,11 @@ class Product extends Component
         $product = getSingleImageShutterstock($this->shutterstock_id) ?? null;
         $similarProducts = getSimilarImagesShutterstock($product) ?? null;
         return view('livewire.website.sources.shutterstock.product', ['product' => $product , 'similar_products' => $similarProducts]);
+    }
+
+    public function downloadViaCredit($id)
+    {
+        $this->showDownloadButton = false;
+        return redirect()->route('sources.shutter-stock.download-via-credit', ['shutterstock_id' => $id]);
     }
 }
