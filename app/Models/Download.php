@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Hekmatinasser\Verta\Facades\Verta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -54,6 +55,13 @@ class Download extends Model
             return $source->getDownloadLink($mediaId);
         }
         return false;
+    }
+
+    public function getShamsiCreatedAtAttribute()
+    {
+        if($this->created_at)
+            return Verta::instance($this->created_at)->format('Y-n-j H:i:s');
+        return null;
     }
 
 }

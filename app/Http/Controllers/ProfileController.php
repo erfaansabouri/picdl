@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Download;
 use App\Models\Ticket;
 use App\Models\Transaction;
 use App\Models\User;
@@ -20,7 +21,9 @@ class ProfileController extends Controller
             ->take(3)
             ->get();
 
-        return view('website.profile.dashboard', compact('transactions', 'user'));
+        $lastDownload = Download::query()->where('user_id', $user->id)->latest()->first();
+
+        return view('website.profile.dashboard', compact('transactions', 'lastDownload','user'));
     }
 
     public function transactions(Request $request)
@@ -38,6 +41,24 @@ class ProfileController extends Controller
         $transactions = $transactions->get();
 
         return view('website.profile.transactions', compact('transactions'));
+
+    }
+
+    public function downloads(Request $request)
+    {
+        $user = Auth::guard('web')->user();
+
+        $downloads = Download::query()
+            ->where('user_id', $user->id);
+
+        if($request->search)
+        {
+            $downloads = $downloads->where('code', 'like', '%'.$request->search.'%');
+        }
+
+        $downloads = $downloads->get();
+
+        return view('website.profile.downloads', compact('downloads'));
 
     }
 

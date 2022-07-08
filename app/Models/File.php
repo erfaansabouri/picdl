@@ -11,6 +11,11 @@ class File extends Model
     protected $table = 'files';
     protected $guarded = [];
 
+    public function getFullPathAttribute()
+    {
+        return getenv('APP_URL'). '/storage/'. $this->path;
+    }
+
     public function getPrivateDownloadLinkAttribute()
     {
         $f = storage_path($this->path);

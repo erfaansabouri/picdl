@@ -95,6 +95,7 @@ Route::middleware([])->group(function () {
 Route::middleware(['auth:web'])->prefix('profile')->group(function () {
     Route::get('dashboard', [\App\Http\Controllers\ProfileController::class, 'dashboard'])->name('profile.dashboard');
     Route::get('transactions', [\App\Http\Controllers\ProfileController::class, 'transactions'])->name('profile.transactions');
+    Route::get('downloads', [\App\Http\Controllers\ProfileController::class, 'downloads'])->name('profile.downloads');
     Route::get('user-details', [\App\Http\Controllers\ProfileController::class, 'userDetails'])->name('profile.user-details');
     Route::put('user-details', [\App\Http\Controllers\ProfileController::class, 'updateDetails'])->name('profile.update-details');
     Route::get('tickets', [\App\Http\Controllers\ProfileController::class, 'tickets'])->name('profile.tickets');

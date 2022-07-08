@@ -9,6 +9,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "fruitcake/laravel-cors": "^2.0",
+        "ghasedak/laravel": "^1.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "hekmatinasser/verta": "^2.1",
         "laravel/framework": "^8.75",

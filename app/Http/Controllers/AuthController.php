@@ -32,6 +32,7 @@ class AuthController extends Controller
             ]);
             $otp = rand(1000,9999);
             $user->otp = $otp;
+            //ghasedakSimple($normalizedPhoneNumber,$otp);
             $user->save();
             return redirect()->route('auth.get-otp-form', ['token' => encrypt($user)]);
         }
@@ -125,6 +126,7 @@ class AuthController extends Controller
         ]);
         $otp = rand(1000,9999);
         $user->otp = $otp;
+        //ghasedakSimple($normalizedPhoneNumber,$otp);
         $user->save();
         return redirect()->route('auth.get-otp-form', ['token' => encrypt($user)]);
     }
@@ -135,6 +137,7 @@ class AuthController extends Controller
         $otp = rand(1000,9999);
         $user->password = null;
         $user->otp = $otp;
+        //ghasedakSimple($user->phone_number,$otp);
         $user->save();
         return redirect()->route('auth.get-otp-form', ['token' => $token]);
     }

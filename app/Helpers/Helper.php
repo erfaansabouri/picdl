@@ -199,3 +199,9 @@ function getSourcePriceCostForSingleFile($source_id, $media_type = 'image')
     }
     return 99;
 }
+
+
+function ghasedakSimple($receptor, $message, $lineNumber = '300002525')
+{
+    return $response = Ghasedak\Laravel\GhasedakFacade::SendSimple($receptor, $message, $lineNumber);
+}

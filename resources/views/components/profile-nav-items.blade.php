@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li>
-                <a href="panel-download.html" class="panel-menu_link d-flex align-items-center">
+                <a href="{{ route('profile.downloads') }}" class="panel-menu_link d-flex align-items-center">
                     سوابق دانلود
                     <span class="icon-chevron-thin-down"></span>
                 </a>

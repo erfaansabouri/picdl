@@ -26,12 +26,13 @@
                         <div class="title-section">
                             <div class="d-flex align-items-center justify-content-between">
                                 <h3 class="title__section d-flex align-items-center"><span class="icon-crystal-ball"></span>آخرین سابقه دانلود</h3>
-                                <a href="#" class="more-view-btn btn-blue">مشاهده بیشتر</a>
+                                <a href="{{ route('profile.downloads') }}" class="more-view-btn btn-blue">مشاهده بیشتر</a>
                             </div>
                         </div>
+                        @if($lastDownload)
                         <div class="last-download d-flex align-items-center w-100 flex-wrap">
                             <div class="last-download-img">
-                                <img src="../img/construction-worker.png" alt="">
+                                <img src="{{ $lastDownload->file->full_path }}" alt="">
                             </div>
                             <div class="list-down">
                                 <div class="d-flex align-items-center">
@@ -40,12 +41,13 @@
                                 </div>
                                 <div class="line"></div>
                                 <div class="d-flex align-items-center">
-                                    <p>شاتراستوک</p>
-                                    <p>25/03/1401</p>
+                                    <p>{{ $lastDownload->source->website }}</p>
+                                    <p>{{ $lastDownload->shamsi_created_at }}</p>
                                 </div>
                             </div>
-                            <a href="#" class="re-download-btn btn-green">دانلود مجدد</a>
+                            <a target="_blank" href="{{ $lastDownload->file->full_path }}" class="re-download-btn btn-green">دانلود مجدد</a>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
