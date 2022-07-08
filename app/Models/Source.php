@@ -52,7 +52,7 @@ class Source extends Model
     {
         $contents = file_get_contents($link);
         $fileName = Str::random(16). '.' . 'jpg';
-        Storage::disk('public')->put($fileName, $contents);
+        Storage::disk('parswebserver')->put($fileName, $contents);
         $file = File::query()
             ->create([
                 'path' => $fileName,

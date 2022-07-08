@@ -13,7 +13,7 @@ class File extends Model
 
     public function getPrivateDownloadLinkAttribute()
     {
-        $f = Storage::download(storage_path('public/'.$this->path));
+        $f = storage_path($this->path);
         dd($f); // TODO
     }
 }
